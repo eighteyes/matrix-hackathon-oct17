@@ -4,15 +4,15 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
+	
 	<title>reveal.js</title>
-
+	
 	<link rel="stylesheet" href="css/reveal.css">
 	<link rel="stylesheet" href="css/theme/black.css">
-
+	
 	<!-- Theme used for syntax highlighting of code -->
 	<link rel="stylesheet" href="lib/css/zenburn.css">
-
+	
 	<!-- Printing and PDF exports -->
 	<script>
 		var link = document.createElement('link');
@@ -24,81 +24,204 @@
 </head>
 
 <body>
+	<style>.reveal section img { border: 0; background: none; }</style>
+	<img src="img/matrix.png">
 	<div class="reveal">
 		<div class="slides">
 			<section data-markdown>
 				<textarea data-template>
-					## What is the MATRIX Creator
-Multipurpose hardware. Sensors, Bluetooth, Zigbee, Zwave, LEDs, Linux / Raspbian
-
-</textarea>
+					## What is the MATRIX Creator?
+					<section>
+						<img src="img/device.png" height=300>
+						<p>
+							Multipurpose hardware for all developers.
+						</p> 
+					</section>
+					<section>
+						<img src="img/fpga.png">
+						<img src="img/gyroscope.png">
+						<img src="img/led-array.png">
+						<img src="img/mic-array.png">
+						<p>
+							Sensors, Bluetooth, Zigbee, IR, Zwave, LEDs
+						</p>
+					</section>
+					<section>
+						
+						<p>
+							Runs on top of Raspberry Pi / Raspbian / Linux
+						</p>
+					</section>
+				</textarea>
 			</section>
 			<section data-markdown>
 				<textarea data-template>
-- Software System Components
-HAL / CORE - Protobufs ZeroMQ
-Flexibility to access hardware using any software you are comfortable with using.
-MATRIX OS - JavaScript, CLI, Dashboards
-Easy to use, IoT for everybody. If you can make a website, you can drive device behavior. 
-MATRIX OS is built atop of HAL CORE	</textarea>
+					## System Components
+					### Low Level
+					<section>
+						<p>HAL / CORE - Protocol Buffers / ZeroMQ</p>
+						Flexibility to access hardware using almost any programming language.
+					</section>
+					
+				</textarea>
 			</section>
 			<section data-markdown>
 				<textarea data-template>
-
-- Tooling
-Mobile / CLI - Comfortably manage your devices and applications.
-Dashboards - Real time interactions inside a modular structured data driven interface.
-Sensors - Temp, Pressure, Humidity, Gyroscope, Accellerometer, Magnetometer
-Voice - Voice driven interfaces (alpha)</textarea>
+					## System Components 
+					### Managed
+					<section>	
+						<p>MATRIX OS - JavaScript, CLI, Dashboards</p>
+						
+						<p>
+							Easy to use, IoT for everybody. 
+						</p>
+						
+						<p>
+							If you can make a website, you can drive device behavior. 
+						</p>
+						
+						<p>
+							MATRIX OS is built atop of HAL CORE	
+						</p>
+						
+					</section>
+				</textarea>
 			</section>
 			<section data-markdown>
 				<textarea data-template>
-
-- Software System Components
-HAL / CORE - Protobufs ZeroMQ
-Flexibility to access hardware using any software you are comfortable with using.
-MATRIX OS - JavaScript, CLI, Dashboards
-Easy to use, IoT for everybody. If you can make a website, you can drive device behavior. 
-MATRIX OS is built atop of HAL CORE			</textarea>
+					## MATRIX OS Tooling
+					* Mobile / CLI - Comfortably manage your devices and applications.
+					* Dashboards - Real time interactions inside a modular, data driven interface.
+					* Sensors - Temp, Pressure, Humidity, Gyroscope, Accellerometer, Magnetometer
+					* Voice - Voice driven interfaces (ask for help)
+				</textarea>
 			</section>
 			<section data-markdown>
 				<textarea data-template>
-
-- CV
-Face Detection / Face Demographics / Face Recognition
-Gesture - Hand / Fist					</textarea>
+					## CV
+					<img src="img/computer_vision.png">
+					* Face Detection / Face Demographics / Face Recognition
+					* Gesture - Hand / Fist
+				</textarea> 
 			</section>
-
-
-
 			<section data-markdown>
 				<textarea data-template>
+					## MATRIX OS Workflow
+					<section>
+						Setup your device. Find device on network.
+					</section>
+					<section>
+						Using CLI. Make a MATRIX LABS Account
+<br>
+						```
+						> matrix register
+						```
+					</section>
+					<section>
+						Register your device
+						<br>
+						```
+						> matrix register device
+						```
+						<br>
+						Copy provided id and secret to device .bash_profile over SSH.
+					</section>
+					
+					<section>
+						Login to your device.
+						<br>
+						```
+						> cd matrix-os;
+						> node index.js;
+						```
+					</section>
+			</textarea> 
+		</section>
+		<section data-markdown>
+			<textarea data-template>
 
-- Common mistakes or problems
-Make sure to render the leds.
-matrix.led().render();
-Hacks
+					## MATRIX OS Workflow
+				<section>
 
-START_APP
-npm start watch-apps
-</textarea>
+					Back on local computer. CLI
+					<br>
+					```
+					> matrix create myAppName
+					```
+
+				</section>	
+				<section>Code Your App</section>
+				<section>
+
+					Upload the code to the device
+					<br>
+					```
+					> matrix deploy
+					```
+					
+				</section>			
+				<section>
+					Start your application
+					<br>
+					```
+					> matrix start myAppName
+					```
+				</section>			
+				</textarea> 
 			</section>
+			<section data-markdown>
+				<textarea data-template>
+					## Common mistakes or problems
+					Make sure to render the leds.
+					```
+					matrix.led().render();
+					```
+					
+					Deploy apps before running them.
+					```
+					matrix deploy
+					```
+					
+					ZWave, NFC and IR Reciever are not implemented yet.
+					
+				</textarea> 
+			</section>
+			<section data-markdown>
+				<textarea data-template>
+					## Hacks
+					
+					```
+					START_APP=myAppName node index.js
+					```
+					
+					<p> get ip, save as m to /etc/hosts enables
+					</p>
+					
+					
+					```
+					npm start watch-apps
+					```
+				</textarea>
+			</section>
+			
 		</div>
 	</div>
-
+	
 	<script src="lib/js/head.min.js"></script>
 	<script src="js/reveal.js"></script>
-
+	
 	<script>
 		// More info about config & dependencies:
 		// - https://github.com/hakimel/reveal.js#configuration
 		// - https://github.com/hakimel/reveal.js#dependencies
 		Reveal.initialize({
+			width: '90%',
+			center:false,
 			dependencies: [
-				{ src: 'plugin/markdown/marked.js' },
-				{ src: 'plugin/markdown/markdown.js' },
-				{ src: 'plugin/notes/notes.js', async: true },
-				{ src: 'plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } }
+			{ src: 'plugin/markdown/marked.js' },
+			{ src: 'plugin/markdown/markdown.js' },
+			{ src: 'plugin/notes/notes.js', async: true },
+			{ src: 'plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } }
 			]
 		});
 	</script>
